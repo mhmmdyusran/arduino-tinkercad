@@ -1,0 +1,19 @@
+{
+  "name": "tutorial-arduino-tinkercad",
+  "version": "1.0.0",
+  "description": "Kumpulan tutorial Arduino dengan Tinkercad + chat realtime",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node --watch app.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.6",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5"
+  }
+}

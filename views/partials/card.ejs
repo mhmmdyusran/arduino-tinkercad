@@ -1,0 +1,8 @@
+<a class="card" href="/tutorials/<%= t.id %>">
+  <img src="<%= imgSrc(t) %>" alt="<%= t.imageAlt || t.title %>" loading="lazy">
+  <div class="card-body">
+    <h3><%= t.title %></h3>
+    <p><%= t.short || t.description %></p>
+    <span class="btn btn-small">Lihat Tutorial</span>
+  </div>
+</a>

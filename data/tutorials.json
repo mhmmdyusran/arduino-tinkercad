@@ -1,0 +1,32 @@
+[
+  {
+    "id": "rgb-led-color-fading",
+    "title": "RGB LED Color Fading",
+    "description": "Membuat LED RGB berubah warna secara perlahan dari merah → hijau → biru → kembali ke merah menggunakan Arduino Uno.",
+    "short": "Membuat RGB LED berubah warna secara otomatis.",
+    "image": "/images/rgb-led-color-fading.png",
+    "imageAlt": "Rangkaian RGB LED dengan Arduino Uno di Tinkercad",
+    "components": ["1 Arduino Uno", "1 RGB LED", "1 resistor 330Ω", "Kabel jumper"],
+    "connectionsIntro": "Letakkan RGB LED dengan 4 kaki menghadap ke arah kamu, lalu lihat dari kiri ke kanan.",
+    "connections": [
+      {
+        "from": "Pin pertama dari kiri",
+        "to": "Pin 9 Arduino"
+      },
+      {
+        "from": "Pin kedua dari kiri",
+        "to": "Resistor 330Ω, lalu ujung resistor lainnya ke GND Arduino"
+      },
+      {
+        "from": "Pin ketiga dari kiri",
+        "to": "Pin 11 Arduino"
+      },
+      {
+        "from": "Pin keempat dari kiri",
+        "to": "Pin 10 Arduino"
+      }
+    ],
+    "code": "#define red 9\n#define green 10\n#define blue 11\n\nvoid setup() {\n  pinMode(red, OUTPUT);\n  pinMode(green, OUTPUT);\n  pinMode(blue, OUTPUT);\n}\n\nvoid setColor(int r, int g, int b) {\n  analogWrite(red, r);\n  analogWrite(green, g);\n  analogWrite(blue, b);\n}\n\nvoid fade(int r1, int g1, int b1, int r2, int g2, int b2) {\n  for (int i = 0; i <= 255; i++) {\n    int r = map(i, 0, 255, r1, r2);\n    int g = map(i, 0, 255, g1, g2);\n    int b = map(i, 0, 255, b1, b2);\n\n    setColor(r, g, b);\n    delay(1);\n  }\n}\n\nvoid loop() {\n  // Merah -> Hijau\n  fade(255, 0, 0, 0, 255, 0);\n\n  // Hijau -> Biru\n  fade(0, 255, 0, 0, 0, 255);\n\n  // Biru -> Merah\n  fade(0, 0, 255, 255, 0, 0);\n}",
+    "updatedAt": 0
+  }
+]

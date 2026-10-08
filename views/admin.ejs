@@ -1,0 +1,73 @@
+<%- include('partials/head') %>
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h1>Admin tutorial</h1>
+      <form method="post" action="/admin/logout"><button class="btn btn-small btn-ghost" type="submit">Logout</button></form>
+    </div>
+
+    <div class="admin-grid">
+      <aside class="panel">
+        <h2 class="first">Tutorial (<%= tutorials.length %>)</h2>
+        <ul class="admin-list">
+          <% tutorials.forEach(t => { %>
+            <li>
+              <div><b><%= t.title %></b><small>/tutorials/<%= t.id %></small></div>
+              <div class="admin-actions">
+                <a href="/tutorials/<%= t.id %>" target="_blank" rel="noopener">Lihat</a>
+                <button type="button" data-edit="<%= t.id %>">Edit</button>
+                <button type="button" class="danger" data-delete="<%= t.id %>" data-title="<%= t.title %>">Hapus</button>
+              </div>
+            </li>
+          <% }) %>
+        </ul>
+        <button class="btn btn-small" type="button" id="newBtn">+ Tutorial baru</button>
+      </aside>
+
+      <form class="panel form" id="tForm" novalidate>
+        <h2 class="first" id="formTitle">Tutorial baru</h2>
+
+        <label for="fTitle">Judul</label>
+        <input type="text" id="fTitle" maxlength="100" placeholder="Contoh: Running LED">
+
+        <label for="fId">ID (alamat halaman)</label>
+        <input type="text" id="fId" maxlength="80" placeholder="running-led">
+        <small class="hint" id="idHint">Terisi otomatis dari judul. Hanya huruf kecil, angka, dan tanda minus.</small>
+
+        <label for="fShort">Deskripsi singkat (untuk kartu)</label>
+        <input type="text" id="fShort" maxlength="160" placeholder="Membuat 5 LED menyala bergantian.">
+
+        <label for="fDesc">Deskripsi</label>
+        <textarea id="fDesc" rows="3" maxlength="1000"></textarea>
+
+        <label for="fImageUrl">Gambar rangkaian: URL atau path</label>
+        <input type="text" id="fImageUrl" placeholder="https://... atau /images/nama.png">
+        <label for="fFile">atau upload file (otomatis dikompres)</label>
+        <input type="file" id="fFile" accept="image/*">
+        <small class="hint" id="imgInfo"></small>
+        <img id="imgPreview" class="preview" alt="" hidden>
+
+        <label for="fComponents">Komponen (satu per baris)</label>
+        <textarea id="fComponents" rows="4" placeholder="1 Arduino Uno&#10;1 LED&#10;1 resistor 220Ω"></textarea>
+
+        <label for="fIntro">Pengantar sambungan (opsional)</label>
+        <input type="text" id="fIntro" maxlength="300">
+
+        <label for="fConn">Sambungan (satu per baris, format: dari | ke)</label>
+        <textarea id="fConn" rows="4" placeholder="Kaki panjang LED | Pin 13 Arduino&#10;Kaki pendek LED | Resistor 220Ω, lalu ke GND"></textarea>
+
+        <label for="fCode">Kode Arduino</label>
+        <textarea id="fCode" rows="12" spellcheck="false" class="mono"></textarea>
+
+        <p class="error" id="formMsg" role="alert"></p>
+        <div class="actions">
+          <button class="btn" type="submit" id="saveBtn">Simpan tutorial</button>
+          <button class="btn btn-ghost" type="button" id="cancelBtn" hidden>Batal edit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<%- include('partials/foot') %>
+<script src="/js/admin.js"></script>
+</body></html>

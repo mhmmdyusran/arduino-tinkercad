@@ -1,0 +1,16 @@
+<%- include('partials/head') %>
+<section class="section">
+  <div class="container narrow">
+    <h1>Admin</h1>
+    <form method="post" action="/admin/login" class="panel join">
+      <label for="password">Password</label>
+      <div class="row">
+        <input id="password" name="password" type="password" autocomplete="current-password" required autofocus>
+        <button class="btn" type="submit">Masuk</button>
+      </div>
+      <p class="error" role="alert"><%= error %></p>
+    </form>
+  </div>
+</section>
+<%- include('partials/foot') %>
+</body></html>

@@ -1,0 +1,42 @@
+<%- include('partials/head') %>
+<article class="section">
+  <div class="container narrow">
+    <a class="back" href="/tutorials">← Kembali ke daftar tutorial</a>
+    <h1><%= tutorial.title %></h1>
+    <p class="lead"><%= tutorial.description %></p>
+
+    <figure class="figure">
+      <img src="<%= imgSrc(tutorial) %>" alt="<%= tutorial.imageAlt || tutorial.title %>">
+    </figure>
+
+    <h2>Komponen yang dibutuhkan</h2>
+    <ul class="checklist">
+      <% tutorial.components.forEach(c => { %><li><%= c %></li><% }) %>
+    </ul>
+
+    <% if (tutorial.connections.length) { %>
+    <h2>Sambungan</h2>
+    <% if (tutorial.connectionsIntro) { %><p><%= tutorial.connectionsIntro %></p><% } %>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Dari</th><th>Sambungkan ke</th></tr></thead>
+        <tbody>
+          <% tutorial.connections.forEach(c => { %>
+            <tr><td><%= c.from %></td><td><%= c.to %></td></tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <% } %>
+
+    <div class="code-head">
+      <h2>Kode Arduino</h2>
+      <button class="btn btn-small" id="copyBtn" data-target="codeBlock">Copy Code</button>
+    </div>
+    <pre class="code"><code id="codeBlock"><%= tutorial.code %></code></pre>
+
+    <a class="btn btn-ghost" href="/tutorials">← Kembali ke daftar tutorial</a>
+  </div>
+</article>
+<%- include('partials/foot') %>
+</body></html>

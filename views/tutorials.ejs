@@ -1,0 +1,13 @@
+<%- include('partials/head') %>
+<section class="section">
+  <div class="container">
+    <h1>Daftar Tutorial</h1>
+    <p class="lead">Pilih project, lalu ikuti rangkaiannya langkah demi langkah.</p>
+    <% if (!tutorials.length) { %><p>Belum ada tutorial.</p><% } %>
+    <div class="grid">
+      <% tutorials.forEach(t => { %><%- include('partials/card', { t }) %><% }) %>
+    </div>
+  </div>
+</section>
+<%- include('partials/foot') %>
+</body></html>

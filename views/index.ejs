@@ -1,0 +1,32 @@
+<%- include('partials/head') %>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1>Tinkercad.</h1>
+      <p class="lead">Tinkercad tutorial list.</p>
+      <div class="actions">
+        <a class="btn" href="/tutorials">Lihat Tutorial</a>
+        <a class="btn btn-ghost" href="/chat">Buka Chat</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="led-ring"></div>
+      <div class="led-core"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Tutorial terbaru</h2>
+      <a href="/tutorials">Semua tutorial</a>
+    </div>
+    <div class="grid">
+      <% featured.forEach(t => { %><%- include('partials/card', { t }) %><% }) %>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/foot') %>
+</body></html>
